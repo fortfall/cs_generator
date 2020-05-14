@@ -1,7 +1,7 @@
 import os
 import pytest
 from ..CSGenerator import CSGenerator
-from .conftest import Test, Person, Job
+from .conftest import Test, Person, Job, Person1
 
 @pytest.fixture(params=[('../samples')])
 def dest_folder(request):
@@ -30,15 +30,23 @@ def folders(dest_folder):
     return (folder_1, folder_2)
 
 
-def test_person_export(person, folders):
+def test_person_export(person, namespace, folders):
     folder_1 = folders[0]
     folder_2 = folders[1]
     csg = CSGenerator(person)
-    csg.export('TestNamesapce', folder_1)
+    csg.export(namespace, folder_1)
     csg = CSGenerator(person, True)
-    csg.export('TestNamespace', folder_2)
+    csg.export(namespace, folder_2)
     assert os.path.exists(os.path.join(folder_1, 'Person.cs'))
     assert os.path.exists(os.path.join(folder_2, 'Person.cs'))
+
+def test_person1_export(namespace, folders):
+    folder_1 = folders[0]
+    folder_2 = folders[1]
+    csg = CSGenerator(Person1)
+    csg.export(namespace, folder_1)
+    csg = CSGenerator(Person1, True)
+    csg.export(namespace, folder_2)
 
 def test_export(namespace, folders):
     folder_1 = folders[0]

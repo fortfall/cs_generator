@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace TestNamespace
 {
-    public partial class Person    
+    public partial class Person1    
     {
         public readonly string name; 
         public readonly int age; 
@@ -11,7 +11,7 @@ namespace TestNamespace
         public readonly IReadOnlyList<string> hobbies; 
 
         [JsonConstructor]
-        public Person(
+        public Person1(
             string name,
             int age,
             Job job,

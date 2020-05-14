@@ -32,6 +32,9 @@ class Person:
         self.job = job
         self.hobbies = hobbies
 
+csg = CSGenerator(Person, ref_keeping=True)
+csg.export('TestNamespace', dest_folder)
+# or
 p = Person('Jack', 33, Job.Teacher, ['Swimming', 'Video Games', 'Fishing'])
 csg = CSGenerator(p, ref_keeping=True)
 csg.export('TestNamespace', dest_folder)

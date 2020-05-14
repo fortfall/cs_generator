@@ -2,6 +2,7 @@ import os
 import logging
 import re
 from enum import Enum
+from inspect import isclass
 from collections.abc import Iterable
 from pystache import Renderer
 from typing import (List, Union, Dict, Tuple, Set, FrozenSet, Optional, _GenericAlias)
@@ -105,7 +106,13 @@ class CSGenerator:
         self._enum_info = []
         self._used_names = set()
         # register all user defined classes and enums
-        self._register(obj)
+        if isclass(obj):
+            if obj in SUPPORTED_TYPES:
+                raise Exception(f"{obj} is builtin type. Only user-defined classes and enums are supported.")
+            else:
+                self._register_customized_class(obj)
+        else:
+            self._register(obj)
         # parsing
         for x in self._classes:
             info = self._parse_cls(x)

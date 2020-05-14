@@ -21,6 +21,17 @@ class Person:
         self.job = job
         self.hobbies = hobbies
 
+class Person1:
+    name: str
+    age: int
+    job: Job
+    hobbies: List[str]
+    def __init__(self, name, age, job, hobbies):
+        self.name = name
+        self.age = age
+        self.job = job
+        self.hobbies = hobbies
+
 class Test:
     int_var: int
     float_var: float
