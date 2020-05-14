@@ -1,4 +1,5 @@
-using System.Collections.Generic;
+cls_tmpl = \
+r"""using System.Collections.Generic;
 {{#dynamic}}
 using System.Dynamic;
 {{/dynamic}}
@@ -25,3 +26,18 @@ namespace {{namespace}}
         }
     }
 }
+"""
+
+enum_tmpl = \
+r"""using Newtonsoft.Json;
+
+namespace {{namespace}}
+{
+    public enum {{name}}
+    {
+        {{#item}}
+        {{itemName}} = {{itemValue}}{{^endLine}},{{/endLine}}
+        {{/item}}
+    }
+}
+"""
