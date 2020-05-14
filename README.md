@@ -41,6 +41,19 @@ csg.export('TestNamespace', dest_folder)
 ```
 output cs script
 ```csharp
+using Newtonsoft.Json;
+
+namespace TestNamespace
+{
+    public enum Job
+    {
+        Teacher = 0,
+        Engineer = 1,
+        Doctor = 2
+    }
+}
+```
+```csharp
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
