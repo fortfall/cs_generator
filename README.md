@@ -5,7 +5,7 @@ python script for generating C# files for Newtonsoft.Json deserialization from p
 ```python
 pip install cs_generator
 ```
-* download package and execute setup.py
+* download package and run setup.py
 ```python
 python setup.py install
 ```
