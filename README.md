@@ -6,6 +6,9 @@ python script for generating C# files for Newtonsoft.Json deserialization from p
 pip install cs_generator
 ```
 * download package and execute setup.py
+```python
+python setup.py install
+```
 
 ### Usage
 * Annotate classes that are to be converted to C#; should be annotated on class level.
