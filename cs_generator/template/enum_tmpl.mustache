@@ -1,0 +1,11 @@
+using Newtonsoft.Json;
+
+namespace {{namespace}}
+{
+    public enum {{name}}
+    {
+        {{#item}}
+        {{itemName}} = {{itemValue}}{{^endLine}},{{/endLine}}
+        {{/item}}
+    }
+}

@@ -1,0 +1,27 @@
+using System.Collections.Generic;
+{{#dynamic}}
+using System.Dynamic;
+{{/dynamic}}
+using Newtonsoft.Json;
+
+namespace {{namespace}}
+{
+    public partial class {{name}}    
+    {
+        {{#field}}
+        public readonly {{fieldType}} {{fieldName}}; 
+        {{/field}}
+
+        [JsonConstructor]
+        public {{name}}(
+            {{#field}}
+            {{paramType}} {{fieldName}}{{^endLine}},{{/endLine}}
+            {{/field}}
+        )
+        {
+            {{#field}}
+            this.{{fieldName}} = {{fieldName}};
+            {{/field}}
+        }
+    }
+}
