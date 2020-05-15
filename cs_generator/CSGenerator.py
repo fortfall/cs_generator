@@ -208,17 +208,17 @@ class CSGenerator:
         self._used_names.add(name)
         info = {
             "name": name,
-            "item": []
+            "member": []
         }
         for x in cls:
-            info["item"].append(
+            info["member"].append(
                 {
-                    "itemName": x.name,
-                    "itemValue": x.value
+                    "memberName": x.name,
+                    "memberValue": x.value
                 }
             )
-        if len(info["item"]) > 0:
-            info["item"][-1]["endLine"] = True
+        if len(info["member"]) > 0:
+            info["member"][-1]["endLine"] = True
         return info
     
     def _get_available_name(self, name):
@@ -234,7 +234,7 @@ class CSGenerator:
         return name + '_' + str(suffix)
     
     @staticmethod
-    def _test_dynamic(info):
+    def _has_dynamic(info):
         for x in info['field']:
             if 'dynamic' in x['fieldType'] or 'dynamic' in x['paramType']:
                 return True
@@ -243,7 +243,7 @@ class CSGenerator:
     def export(self, namespace, dest_folder):
         for info in self._cls_info:
             info['namespace'] = namespace
-            if CSGenerator._test_dynamic(info):
+            if CSGenerator._has_dynamic(info):
                 info['dynamic'] = [{}]
             filename = os.path.join(dest_folder, info['name'] + '.cs')
             with open(filename, 'w') as fp:
