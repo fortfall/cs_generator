@@ -134,7 +134,7 @@ class CSGenerator:
             for x in obj:
                 self._register(x)
         elif isinstance(obj, (dict)):
-            for k, v in obj:
+            for k, v in obj.items():
                 self._register(v)
 
     def _register_customized_class(self, cls):
